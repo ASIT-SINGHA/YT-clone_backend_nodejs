@@ -1,11 +1,21 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "yt clone app",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "asit kumar singha",
-  "license": "ISC"
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "yt clone app",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "node scr/index",
+		"dev": "nodemon scr/index"
+	},
+	"author": "asit kumar singha",
+	"license": "ISC",
+	"devDependencies": {
+		"nodemon": "^3.1.11"
+	},
+	"dependencies": {
+		"dotenv": "^17.2.3",
+		"express": "^5.2.1",
+		"mongoose": "^9.0.0"
+	}
 }
