@@ -1,30 +1,33 @@
 {
-	"name": "backend",
-	"version": "1.0.0",
-	"description": "yt clone app",
-	"main": "index.js",
-	"type": "module",
-	"scripts": {
-		"start": "node scr/index",
-		"dev": "nodemon scr/index"
-	},
-	"author": "asit kumar singha",
-	"license": "ISC",
-	"devDependencies": {
-		"nodemon": "^3.1.11"
-	},
-	"dependencies": {
-		"bcrypt": "^6.0.0",
-		"cloudinary": "^2.8.0",
-		"cookie-parser": "^1.4.7",
-		"cookies-parser": "^1.2.0",
-		"cors": "^2.8.5",
-		"dotenv": "^17.2.3",
-		"express": "^5.2.1",
-		"jsonwebtoken": "^9.0.2",
-		"mongodb": "^7.0.0",
-		"mongoose": "^9.0.0",
-		"mongoose-aggregate-paginate-v2": "^1.1.4",
-		"multer": "^2.0.2"
-	}
+  "name": "yt-clone",
+  "version": "1.0.0",
+  "description": "yt clone app",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
+  "keywords": [
+    "javascript",
+    "backend",
+    "chai"
+  ],
+  "author": "asit kumar singha",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.8.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0",
+    "mongoose-aggregate-paginate-v2": "^1.0.6",
+    "multer": "^1.4.5-lts.1"
+  }
 }
