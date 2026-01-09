@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import { upload } from "./middlewares/multer.middleware.js"
 
 const app = express()
 
@@ -20,7 +21,7 @@ import userRouter from './routes/user.routes.js'
 
 
 //routes declaration
-app.use("/api/v1/users", userRouter)
+app.use("/api/v1/users",userRouter)
 
 // http://localhost:8000/api/v1/users/register
 
