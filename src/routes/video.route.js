@@ -27,14 +27,8 @@ router
 router
 	.route("/:videoId")
 	.get(getVideoById)
-	.patch(
-		upload.fields([
-			{ name: "videoFile", maxCount: 1 },
-			{ name: "thumbnail", maxCount: 1 },
-		]),
-		updateVideo,
-	)
+	.patch(upload.single("thumbnail"), updateVideo)
 	.delete(deleteVideo);
-router.route("/toggle-video").patch(togglePulishVideo);
+router.route("/toggle-video/:videoId").patch(upload.none(), togglePulishVideo);
 
 export default router;
