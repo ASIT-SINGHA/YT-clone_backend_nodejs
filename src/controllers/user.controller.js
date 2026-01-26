@@ -437,7 +437,7 @@ const getWatchHistory = asyncHandler(async (req, res) => {
 					},
 					{
 						$addFields: {
-							ower: {
+							owner: {
 								$first: "$owner",
 							},
 						},
