@@ -7,9 +7,10 @@ const tweetSchema = new Schema(
 			required: true,
 			trim: true,
 		},
-		onwer: {
+		owner: {
 			type: Schema.Types.ObjectId,
 			ref: "User",
+			required: true,
 		},
 	},
 	{ timestamps: true },
