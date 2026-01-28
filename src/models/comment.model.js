@@ -1,4 +1,5 @@
 import mongoose, { Schema, model } from "mongoose";
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const commentSchema = new Schema(
 	{
@@ -7,13 +8,15 @@ const commentSchema = new Schema(
 			required: true,
 			trim: true,
 		},
-		vidoe: {
+		video: {
 			type: Schema.Types.ObjectId,
 			ref: "Video",
+			required: true,
 		},
-		onwer: {
+		owner: {
 			type: Schema.Types.ObjectId,
 			ref: "User",
+			required: true,
 		},
 	},
 	{ timestamps: true },
