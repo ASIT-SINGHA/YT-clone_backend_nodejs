@@ -5,6 +5,7 @@ import { uploadOnCloudinary, cloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+import { json } from "express";
 
 const options = {
 	httpOnly: true,
@@ -446,7 +447,6 @@ const getWatchHistory = asyncHandler(async (req, res) => {
 			},
 		},
 	]);
-	console.log(user);
 
 	return res
 		.status(200)
@@ -457,6 +457,31 @@ const getWatchHistory = asyncHandler(async (req, res) => {
 				"watch history is successfully fetched.",
 			),
 		);
+});
+
+const createChannel = asyncHandler(async (req, res) => {
+	const { socialLinks, des, currentUrl } = req?.body;
+	const linkObj = JSON.parse(socialLinks);
+
+	const user = await User.collection.findOneAndUpdate(
+  { _id: req.user._id },
+  {
+    $set: {
+      description: des,
+      isChannel: true,
+      channelLink: currentUrl,
+      "socialMediaLinks.facebook": linkObj.facebook,
+      "socialMediaLinks.instagram": linkObj.instagram,
+      "socialMediaLinks.x": linkObj.x,
+    },
+  },
+  { new :true ,validateBeforeSave: false}
+);
+
+
+	return res
+		.status(200)
+		.json(new ApiResponse(200, "Channel create successfully."));
 });
 
 export {
@@ -471,4 +496,5 @@ export {
 	updateUserCoverImage,
 	getUserChannelProfile,
 	getWatchHistory,
+	createChannel,
 };
