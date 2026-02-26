@@ -97,7 +97,7 @@ http://localhost:8000
 | POST   | /api/v1/likes          | Like video |
 | GET    | /api/v1/dashboard/channel/:id | Channel analytics |
 
-> Full API  available via Postman collection [Duck Duck Go](https://github.com/ASIT-SINGHA/YT-clone_backend_nodejs/blob/main/Public/temp/yt%20clone.postman_collection.json).
+> Full API  available via Postman collection [API Collection](https://github.com/ASIT-SINGHA/YT-clone_backend_nodejs/blob/main/Public/temp/yt%20clone.postman_collection.json).
 
 ---
 
@@ -106,16 +106,6 @@ http://localhost:8000
 - APIs tested using **Postman**  
 - JWT-protected routes verified  
 - File upload endpoints tested with multipart/form-data  
-
----
-
-## 📌 Future Improvements
-
-- Complete frontend using React  
-- Add caching (Redis)  
-- Improve search ranking & recommendations  
-- Add unit and integration tests  
-- Deploy backend to cloud (Render/Railway)
 
 ---
 
@@ -129,15 +119,4 @@ Special thanks to Hitesh Choudhary for mentorship and guidance during the develo
 
 **Asit Singha**  
 - GitHub: https://github.com/ASIT-SINGHA  
-- LinkedIn: Asit Singha  
-
----
-
-## ⭐ Why this project matters (for recruiters)
-
-This project demonstrates:
-- Real-world backend architecture  
-- Secure authentication  
-- Media handling  
-- Complex MongoDB aggregations  
-- Scalable API design  
+- LinkedIn: [Asit Singha](https://www.linkedin.com/in/asit-kumar-singha/)
