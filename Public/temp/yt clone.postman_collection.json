@@ -1,0 +1,1344 @@
+{
+  "info": {
+    "_postman_id": "6bb678d6-ee82-400c-9b71-739ec174c3c8",
+    "name": "yt clone",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51038883",
+    "_collection_link": "https://go.postman.co/collection/51038883-6bb678d6-ee82-400c-9b71-739ec174c3c8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fullName",
+                  "value": "kartiksingha",
+                  "type": "text",
+                  "uuid": "bb6b2c1a-3b1c-4163-ab0d-e5c614f02ec8"
+                },
+                {
+                  "key": "username",
+                  "value": "kartik",
+                  "type": "text",
+                  "uuid": "ccca2d19-31dd-4a66-bd22-a006e6847c35"
+                },
+                {
+                  "key": "email",
+                  "value": "kartik@gmail.com",
+                  "type": "text",
+                  "uuid": "b35b470c-efef-4f0f-8a04-d04fba78f861"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text",
+                  "uuid": "72dce0ac-b6d4-4c7c-a674-3c5bd94189d1"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "uuid": "9020ffee-e593-4a8a-a72f-133b8362b292",
+                  "src": "/C:/Users/Asit/Desktop/qlz06txqduxqh0f78sho.jpg"
+                },
+                {
+                  "key": "coverImage",
+                  "type": "file",
+                  "uuid": "fefe230e-5a47-4876-bd0f-e3513327b38f",
+                  "src": "/C:/Users/Asit/Desktop/sm1qzhydpu9bsllm2iwy.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/register",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rohit@gmail.com",
+                  "type": "text",
+                  "uuid": "b35b470c-efef-4f0f-8a04-d04fba78f861"
+                },
+                {
+                  "key": "password",
+                  "value": "12345",
+                  "type": "text",
+                  "uuid": "72dce0ac-b6d4-4c7c-a674-3c5bd94189d1"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/login",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rohit@gmail.com",
+                  "type": "text",
+                  "uuid": "42e57132-a2fb-417f-9a5a-9290da5bf08a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/logout",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "refresh-token",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rohit@gmail.com",
+                  "type": "text",
+                  "uuid": "42e57132-a2fb-417f-9a5a-9290da5bf08a"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text",
+                  "uuid": "2c530fd0-c04d-4bd4-aa42-1158edebfe01"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/refresh-token",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "change-password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oldPassword",
+                  "value": "12345678",
+                  "type": "text",
+                  "uuid": "42e57132-a2fb-417f-9a5a-9290da5bf08a"
+                },
+                {
+                  "key": "newPassword",
+                  "value": "12345",
+                  "type": "text",
+                  "uuid": "2c530fd0-c04d-4bd4-aa42-1158edebfe01"
+                },
+                {
+                  "key": "conformPassword",
+                  "value": "12345",
+                  "type": "text",
+                  "uuid": "9fb6ee68-c04a-4c98-b12a-03dd63763a9a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/change-password",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "change-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-accound-details",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rohitkumar@gmail.com",
+                  "type": "text",
+                  "uuid": "803936fd-280d-4b8c-a701-221c4b53edb5"
+                },
+                {
+                  "key": "fullName",
+                  "value": "rohitkumar singha",
+                  "type": "text",
+                  "uuid": "e74d8012-4ca8-4fd1-9d01-a37f4c633e62"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/update-accound-details",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "update-accound-details"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-avatar",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "uuid": "a86bcf1d-5d07-4ff8-a644-06e4f845ee02",
+                  "src": "/C:/Users/Asit/Desktop/qlz06txqduxqh0f78sho.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/update-avatar",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "update-avatar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-CoverImage",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "coverImage",
+                  "type": "file",
+                  "uuid": "31588f64-28e6-4428-bcd7-7f28421597c5",
+                  "src": "/C:/Users/Asit/Desktop/premium_photo.avif"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/update-CoverImage",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "update-CoverImage"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getUserChannel",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{server}}/users/c/rohit",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "c",
+                "rohit"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "grt-user",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{server}}/users/get-user",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "get-user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "watch-history",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{server}}/users/watch-history",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "watch-history"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-channel",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/users/create-channel",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "create-channel"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "comment",
+      "item": [
+        {
+          "name": "add-comment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{server}}/comment/:videoId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "comment",
+                ":videoId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "100"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "video",
+      "item": [
+        {
+          "name": "upload-A-video",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "videoFile",
+                  "type": "file",
+                  "uuid": "9134a027-5103-462a-8f30-8c3b16b3f24f",
+                  "src": "/D:/avatars-videos/place1.mp4"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "uuid": "b0e92d94-eb50-4d8d-8093-2276df7a8a1f",
+                  "src": "/D:/avatars-videos/boy.png"
+                },
+                {
+                  "key": "title",
+                  "value": "bhai",
+                  "type": "text",
+                  "uuid": "82831575-6c9e-4e5d-ab80-969fbbd7866e"
+                },
+                {
+                  "key": "description",
+                  "value": "dekhe",
+                  "type": "text",
+                  "uuid": "64571047-e883-4177-a834-4f06cd08a36b"
+                },
+                {
+                  "key": "isPublished",
+                  "value": "true",
+                  "type": "text",
+                  "uuid": "61e14441-ed2b-41de-bc7d-1ddcb0014c4d"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/videos/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "videos",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-all-videos",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "videoFile",
+                  "type": "file",
+                  "uuid": "9134a027-5103-462a-8f30-8c3b16b3f24f",
+                  "src": "/D:/avatars-videos/place1.mp4"
+                },
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "uuid": "b0e92d94-eb50-4d8d-8093-2276df7a8a1f",
+                  "src": "/D:/avatars-videos/boy.png"
+                },
+                {
+                  "key": "title",
+                  "value": "bhai",
+                  "type": "text",
+                  "uuid": "82831575-6c9e-4e5d-ab80-969fbbd7866e"
+                },
+                {
+                  "key": "description",
+                  "value": "dekhe",
+                  "type": "text",
+                  "uuid": "64571047-e883-4177-a834-4f06cd08a36b"
+                },
+                {
+                  "key": "isPublished",
+                  "value": "true",
+                  "type": "text",
+                  "uuid": "61e14441-ed2b-41de-bc7d-1ddcb0014c4d"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/videos/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "videos",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-a-videos",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/videos/697605f2d2f8938cedfb6235",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "videos",
+                "697605f2d2f8938cedfb6235"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-video",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "uuid": "b0e92d94-eb50-4d8d-8093-2276df7a8a1f",
+                  "src": "/D:/avatars-videos/girl.png"
+                },
+                {
+                  "key": "title",
+                  "value": "murgan",
+                  "type": "text",
+                  "uuid": "82831575-6c9e-4e5d-ab80-969fbbd7866e"
+                },
+                {
+                  "key": "description",
+                  "value": "dekhe bro dekhe",
+                  "type": "text",
+                  "uuid": "64571047-e883-4177-a834-4f06cd08a36b"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/videos/697605f2d2f8938cedfb6235",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "videos",
+                "697605f2d2f8938cedfb6235"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "toggle-vidoe-publish",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "isPublished",
+                  "type": "text",
+                  "uuid": "b0e92d94-eb50-4d8d-8093-2276df7a8a1f",
+                  "value": "false"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/videos/toggle-video/videoId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "videos",
+                "toggle-video",
+                "videoId"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete-video",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/videos/697605f2d2f8938cedfb6235",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "videos",
+                "697605f2d2f8938cedfb6235"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "subscription",
+      "item": [
+        {
+          "name": "get-subscriber",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/subscriptions/get-subscriber",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "subscriptions",
+                "get-subscriber"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-channel",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rohitkumar@gmail.com",
+                  "type": "text",
+                  "uuid": "42e57132-a2fb-417f-9a5a-9290da5bf08a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/subscriptions/get-channel",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "subscriptions",
+                "get-channel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "toggle-subcription",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/subscriptions/toggle-subscription/6977586cc4f819171cb7b889",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "subscriptions",
+                "toggle-subscription",
+                "6977586cc4f819171cb7b889"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "tweet",
+      "item": [
+        {
+          "name": "create-tweet",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "do you like me vid",
+                  "type": "text",
+                  "uuid": "cf4a2401-0ffe-40f9-93d3-4590e943799d"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/tweets/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "tweets",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-user-tweet",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/tweets/user/69770cd6ca6ac64c05f3cd8c",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "tweets",
+                "user",
+                "69770cd6ca6ac64c05f3cd8c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-tweet",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/tweets/697783b65b61300ff6618b61",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "tweets",
+                "697783b65b61300ff6618b61"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete-tweet",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/tweets/697790c7e2862cd27c2aecf9",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "tweets",
+                "697790c7e2862cd27c2aecf9"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "like",
+      "item": [
+        {
+          "name": "toggle-video-like",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/likes/toggle/v/69770db3ca6ac64c05f3cd98",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "likes",
+                "toggle",
+                "v",
+                "69770db3ca6ac64c05f3cd98"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "comment-like",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{server}}likes/toggle/c/697a1ecfbd50f885e1966e7e",
+              "host": [
+                "{{server}}likes"
+              ],
+              "path": [
+                "toggle",
+                "c",
+                "697a1ecfbd50f885e1966e7e"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "tweet-like",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/likes/toggle/t/697ba72ad45d3871be419518",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "likes",
+                "toggle",
+                "t",
+                "697ba72ad45d3871be419518"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-like-video",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/likes/videos",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "likes",
+                "videos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "comment",
+      "item": [
+        {
+          "name": "add-comment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "maharaj",
+                  "type": "text",
+                  "uuid": "8b96ac40-56fe-47e8-b3e8-3d94246d4aa4"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/comments/69770db3ca6ac64c05f3cd98",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "comments",
+                "69770db3ca6ac64c05f3cd98"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-comment",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "comment",
+                  "value": "ok janu",
+                  "type": "text",
+                  "uuid": "f21d1853-5c5c-447d-9ce6-eb7945792ae8"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/comments/c/69791a06484d8ba8ce0db424",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "comments",
+                "c",
+                "69791a06484d8ba8ce0db424"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete-comment",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "ok janu",
+                  "type": "text",
+                  "uuid": "f21d1853-5c5c-447d-9ce6-eb7945792ae8"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/comments/c/69791a06484d8ba8ce0db424",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "comments",
+                "c",
+                "69791a06484d8ba8ce0db424"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-comment",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "maharaj",
+                  "type": "text",
+                  "uuid": "543763cd-ed98-424e-8b66-fb6670592721"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/comments/69770db3ca6ac64c05f3cd98",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "comments",
+                "69770db3ca6ac64c05f3cd98"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "playlist",
+      "item": [
+        {
+          "name": "create-playlist",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "movies",
+                  "type": "text",
+                  "uuid": "2a4d4bef-8c57-48c0-8165-426c2decb943"
+                },
+                {
+                  "key": "description",
+                  "value": "bollywood",
+                  "type": "text",
+                  "uuid": "34e3524e-1ccf-4472-b1d0-4e1ea25b3bda"
+                },
+                {
+                  "key": "videoId",
+                  "value": "69770db3ca6ac64c05f3cd98",
+                  "type": "text",
+                  "uuid": "f36a4542-2298-4c4b-990b-92562c9ca038"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/playLists/",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "playLists",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "add-vid-playlist",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/playLists//add/:videoId/:playlistId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "playLists",
+                "",
+                "add",
+                ":videoId",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69770e41ca6ac64c05f3cda3"
+                },
+                {
+                  "key": "playlistId",
+                  "value": "697cecfe492de70dd1eae6c7"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-playlist-by-id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/playLists/:playlistId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "playLists",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "playlistId",
+                  "value": "697cecfe492de70dd1eae6c7"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-user-playlist-by-id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/playLists/user/:playlistId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "playLists",
+                "user",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "playlistId",
+                  "value": "69770cd6ca6ac64c05f3cd8c"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete-a-video-form-playlist",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/playLists/remove/:videoId/:playlistId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "playLists",
+                "remove",
+                ":videoId",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "videoId",
+                  "value": "69770e41ca6ac64c05f3cda3"
+                },
+                {
+                  "key": "playlistId",
+                  "value": "697cecfe492de70dd1eae6c7"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-playlist",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "animation",
+                  "type": "text",
+                  "uuid": "85eaf5d0-37d6-47fc-a5c6-9f6c822545fb"
+                },
+                {
+                  "key": "description",
+                  "value": "tollywood ha",
+                  "type": "text",
+                  "uuid": "32092d33-aecf-4e2a-9162-00694bc2b829"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/playLists/:playlistId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "playLists",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "playlistId",
+                  "value": "697cecfe492de70dd1eae6c7"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "dalete-playlist",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/playLists/:playlistId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "playLists",
+                ":playlistId"
+              ],
+              "variable": [
+                {
+                  "key": "playlistId",
+                  "value": "697cecfe492de70dd1eae6c7"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "dashboard",
+      "item": [
+        {
+          "name": "get-chennal-status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}dashboards/stats",
+              "host": [
+                "{{server}}dashboards"
+              ],
+              "path": [
+                "stats"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-chennal-videos",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}dashboards/videos",
+              "host": [
+                "{{server}}dashboards"
+              ],
+              "path": [
+                "videos"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
