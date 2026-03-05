@@ -13,7 +13,8 @@ const videoSchema = new Schema(
         },
         title: {
             type: String, 
-            required: true
+            required: true,
+            index:true
         },
         description: {
             type: String, 
@@ -25,15 +26,18 @@ const videoSchema = new Schema(
         },
         views: {
             type: Number,
-            default: 0
+            default: 0,
+            index:true
         },
         isPublished: {
             type: Boolean,
-            default: true
+            default: true,
+            index:true
         },
         owner: {
             type: Schema.Types.ObjectId,
-            ref: "User"
+            ref: "User",
+            index:true
         }
 
     }, 
