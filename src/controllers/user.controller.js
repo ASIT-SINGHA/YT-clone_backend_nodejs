@@ -14,7 +14,7 @@ const options = {
 
 const generateAccessTokenAndRefreshToken = async (userId) => {
 	try {
-		const user = await User.findOne(userId);
+		const user = await User.findById(userId);
 		const accessToken = user.generateAccessToken();
 		const refreshToken = user.generateRefreshToken();
 
@@ -92,7 +92,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 	return res
 		.status(201)
-		.json(new ApiResponse(200, createdUser, "User registered Successfully"));
+		.json(new ApiResponse(201, createdUser, "User registered Successfully"));
 });
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -110,10 +110,10 @@ const loginUser = asyncHandler(async (req, res) => {
 		throw new ApiError(404, "user does not exist.");
 	}
 
-	const isPasswordVerified = user.isPasswordCorrect(password);
+	const isPasswordVerified = await user.isPasswordCorrect(password);
 
 	if (!isPasswordVerified) {
-		throw new ApiError(402, "wrong password");
+		throw new ApiError(401, "wrong password");
 	}
 
 	const { accessToken, refreshToken } =
@@ -185,14 +185,14 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 			throw new ApiError(400, "refresh token is expire or used. ");
 		}
 
-		const { accessToken, newRefreshToken } = generateAccessTokenAndRefreshToken(
+		const { accessToken, newRefreshToken } = await generateAccessTokenAndRefreshToken(
 			user._id,
 		);
 
 		return res
 			.status(200)
 			.cookie("accessToken", accessToken, options)
-			.cookie("accessToken", newRefreshToken, options)
+			.cookie("refreshToken", newRefreshToken, options)
 			.json(
 				new ApiResponse(
 					200,
@@ -463,8 +463,8 @@ const createChannel = asyncHandler(async (req, res) => {
 	const { socialLinks, des, currentUrl } = req?.body;
 	const linkObj = JSON.parse(socialLinks);
 
-	const user = await User.collection.findOneAndUpdate(
-  { _id: req.user._id },
+	const user = await User.collection.findByIdAndUpdate(
+  	req.user._id,
   {
     $set: {
       description: des,
@@ -480,8 +480,8 @@ const createChannel = asyncHandler(async (req, res) => {
 
 
 	return res
-		.status(200)
-		.json(new ApiResponse(200, "Channel create successfully."));
+		.status(201)
+		.json(new ApiResponse(201, "Channel create successfully."));
 });
 
 export {

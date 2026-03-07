@@ -14,7 +14,7 @@ const getChannelStats = asyncHandler(async (req, res) => {
 	});
 
 	if (!isCreator) {
-		throw new ApiError(400, "you're not a creator. create a channel first");
+		throw new ApiError(403, "you're not a creator. create a channel first");
 	}
 
 	const user = await User.aggregate([
@@ -24,7 +24,7 @@ const getChannelStats = asyncHandler(async (req, res) => {
 				from: "videos",
 				localField: "_id",
 				foreignField: "owner",
-				as: "totalVidoesAndTotalViews",
+				as: "totalVideosAndTotalViews",
 				pipeline: [{ $project: { views: 1 } }],
 			},
 		},
@@ -32,7 +32,7 @@ const getChannelStats = asyncHandler(async (req, res) => {
 			$lookup: {
 				from: "subscriptions",
 				localField: "_id",
-				foreignField: "channel",
+				foreignField: "subscriber",
 				as: "totalSubscriber",
 			},
 		},
@@ -46,9 +46,9 @@ const getChannelStats = asyncHandler(async (req, res) => {
 		},
 		{
 			$addFields: {
-				totalVidoes: { $size: "$totalVidoesAndTotalViews" },
-				totalViews: { $sum: "$views" },
-				subcribersCount: { $size: "$totalSubscriber" },
+				totalVideos: { $size: "$totalVideosAndTotalViews" },
+				totalViews: { $sum: "$totalVidoesAndTotalViews.views" },
+				subscribersCount: { $size: "$totalSubscriber" },
 				isSubscribed: {
 					$cond: {
 						if: { $in: [req.user?._id, "$subscribers.subscriber"] },
@@ -67,9 +67,9 @@ const getChannelStats = asyncHandler(async (req, res) => {
 				channelLink: 1,
 				description: 1,
 				socialMediaLinks: 1,
-				totalVidoes: 1,
+				totalVideos: 1,
 				totalViews: 1,
-				subcribersCount: 1,
+				subscribersCount: 1,
 				isSubscribed: 1,
 			},
 		},

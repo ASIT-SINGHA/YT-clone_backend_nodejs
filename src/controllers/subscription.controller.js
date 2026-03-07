@@ -7,36 +7,37 @@ import mongoose from "mongoose";
 const toggleSubscription = asyncHandler(async (req, res) => {
 	/*
 		algo
-		receive chennel id 
+		receive channel id 
 		find user._id and chennel_id in subscription model 
 		y-> delete doc n -> create doc
 		return res
 	*/
-	const chennelId = req.params?.channelId;
-	const eUser = req.user._id;
+	const channelId = req.params?.channelId;
+	const currentUser = req.user._id;
 
-	if (!chennelId) {
+	if (!channelId) {
 		throw new ApiError(400, "chennel id  required.");
 	}
 
-	const subscribedDoc = await Subscription.findOne({ subscriber: eUser }).where(
+	const subscribedDoc = await Subscription.findOne({ subscriber: currentUser }).where(
 		{
-			channel: chennelId,
+			channel: channelId,
 		},
 	);
 
 	if (!subscribedDoc) {
 		await Subscription.create({
-			subscriber: eUser,
-			channel: chennelId,
+			subscriber: currentUser,
+			channel: channelId,
 		});
-		console.log("subscribed");
+		return res.status(201).json(new ApiResponse(201,newSubscription,"Subscription successfully."))
+		
 	} else {
 		await Subscription.deleteOne({ _id: subscribedDoc._id });
-		console.log("unsubscribed");
+		
+		return res.status(204).json(new ApiResponse(204, "Unsubscription successfully."));
 	}
 
-	return res.status(200).json(new ApiResponse(200, "opration is done."));
 });
 
 const getSubscriber = asyncHandler(async (req, res) => {
@@ -47,7 +48,7 @@ const getSubscriber = asyncHandler(async (req, res) => {
 			},
 		},
 		{
-			$count: "totalSubcribers",
+			$count: "totalSubscribers",
 		},
 	]);
 
@@ -56,8 +57,8 @@ const getSubscriber = asyncHandler(async (req, res) => {
 		.json(
 			new ApiResponse(
 				200,
-				allSubscriber[0].totalSubcribers,
-				"all subscriber is fatched.",
+				allSubscriber[0].totalSubscribers,
+				"all subscriber is fetched.",
 			),
 		);
 });
@@ -98,7 +99,7 @@ const getChannel = asyncHandler(async (req, res) => {
 
 	return res
 	.status(200)
-	.json(new ApiResponse(200,getChannel,"all channel fatched successfully."))
+	.json(new ApiResponse(200,getChannel,"all channel fetched successfully."))
 });
 
 export { getSubscriber, toggleSubscription, getChannel };

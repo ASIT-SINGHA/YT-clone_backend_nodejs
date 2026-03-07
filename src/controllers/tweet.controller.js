@@ -10,7 +10,7 @@ const createTweet = asyncHandler(async (req, res) => {
 	const text = req.body?.content;
 
 	if (!text) {
-		throw new ApiError(200, "text is required.");
+		throw new ApiError(400, "text is required.");
 	}
 
 	const tweet = await Tweet.create({
@@ -19,16 +19,18 @@ const createTweet = asyncHandler(async (req, res) => {
 	});
 
 	return res
-		.status(200)
-		.json(new ApiResponse(200, tweet.content, "tweet is successfully posted."));
+		.status(201)
+		.json(new ApiResponse(201, tweet.content, "tweet is successfully posted."));
 });
 
 const getUserTweets = asyncHandler(async (req, res) => {
 	const userId = req.params?.userId;
-	console.log(userId);
+	if (!userId) {
+		throw new ApiError(400,"userId is required")
+	}
 
 	// TODO: get user tweets
-	const getTweet = await Tweet.findOne({ onwer: userId });
+	const getTweet = await Tweet.findOne({ owner: userId });
 
 	return res
 		.status(200)
@@ -49,7 +51,7 @@ const updateTweet = asyncHandler(async (req, res) => {
 
 	const tweetDoc = await Tweet.findById(tweetId);
 
-	if (!tweetId) {
+	if (!tweetDoc) {
 		throw new ApiError(400, "such no tweet id in db");
 	}
 	// console.log(tweetDoc.owner,typeof tweetDoc.owner);
@@ -87,8 +89,8 @@ const deleteTweet = asyncHandler(async (req, res) => {
 	await Tweet.deleteOne(tweetDoc._id);
 
 	return res
-		.status(200)
-		.json(new ApiResponse(200, "tweet delete successfully. "));
+		.status(204)
+		.json(new ApiResponse(204, "tweet delete successfully. "));
 });
 
 export { createTweet, getUserTweets, updateTweet, deleteTweet };
