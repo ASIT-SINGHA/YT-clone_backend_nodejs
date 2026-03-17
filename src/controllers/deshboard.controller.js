@@ -32,7 +32,7 @@ const getChannelStats = asyncHandler(async (req, res) => {
 			$lookup: {
 				from: "subscriptions",
 				localField: "_id",
-				foreignField: "subscriber",
+				foreignField: "channel",
 				as: "totalSubscriber",
 			},
 		},
@@ -40,8 +40,8 @@ const getChannelStats = asyncHandler(async (req, res) => {
 			$lookup: {
 				from: "subscriptions",
 				localField: "_id",
-				foreignField: "channel",
-				as: "subscribers",
+				foreignField: "subscriber",
+				as: "subscriberto",
 			},
 		},
 		{
@@ -51,7 +51,7 @@ const getChannelStats = asyncHandler(async (req, res) => {
 				subscribersCount: { $size: "$totalSubscriber" },
 				isSubscribed: {
 					$cond: {
-						if: { $in: [req.user?._id, "$subscribers.subscriber"] },
+						if: { $in: [req.user?._id, "$subscriberto.subscriber"] },
 						then: true,
 						else: false,
 					},

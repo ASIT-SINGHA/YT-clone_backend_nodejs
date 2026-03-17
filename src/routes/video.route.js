@@ -9,11 +9,13 @@ import {
 	togglePublishVideo,
 	deleteVideo,
 	getVideoById,
+	searchVideo,
 } from "../controllers/video.controller.js";
 
 const router = Router();
 router.use(verifyJWT);
 
+router.route("/search").get(searchVideo);
 router
 	.route("/")
 	.get(getAllVideo)

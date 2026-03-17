@@ -5,7 +5,6 @@ import { uploadOnCloudinary, cloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
-import { json } from "express";
 
 const options = {
 	httpOnly: true,
@@ -185,9 +184,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 			throw new ApiError(400, "refresh token is expire or used. ");
 		}
 
-		const { accessToken, newRefreshToken } = await generateAccessTokenAndRefreshToken(
-			user._id,
-		);
+		const { accessToken, newRefreshToken } =
+			await generateAccessTokenAndRefreshToken(user._id);
 
 		return res
 			.status(200)
@@ -461,23 +459,34 @@ const getWatchHistory = asyncHandler(async (req, res) => {
 
 const createChannel = asyncHandler(async (req, res) => {
 	const { socialLinks, des, currentUrl } = req?.body;
-	const linkObj = JSON.parse(socialLinks);
 
-	const user = await User.collection.findByIdAndUpdate(
-  	req.user._id,
-  {
-    $set: {
-      description: des,
-      isChannel: true,
-      channelLink: currentUrl,
-      "socialMediaLinks.facebook": linkObj.facebook,
-      "socialMediaLinks.instagram": linkObj.instagram,
-      "socialMediaLinks.x": linkObj.x,
-    },
-  },
-  { new :true ,validateBeforeSave: false}
-);
+	if (!(des && currentUrl)) {
+		throw new ApiError(400, "description and currentUrl is required.");
+	}
 
+	let linkObj = {};
+	if (socialLinks) {
+		linkObj = JSON.parse(socialLinks);
+	}
+	const dbDoc = await User.findById(req.user._id).select("isChannel").lean();
+
+	if (dbDoc.isChannel) {
+		throw new ApiError(409, "Channel is already exist.");
+	}
+	await User.updateOne(
+		{ _id: req.user._id },
+		{
+			$set: {
+				description: des,
+				isChannel: true,
+				channelLink: currentUrl,
+				"socialMediaLinks.facebook": linkObj.facebook,
+				"socialMediaLinks.instagram": linkObj.instagram,
+				"socialMediaLinks.x": linkObj.x,
+			},
+		},
+		{ strict: false },
+	);
 
 	return res
 		.status(201)

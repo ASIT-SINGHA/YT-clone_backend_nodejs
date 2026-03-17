@@ -20,23 +20,21 @@ const createTweet = asyncHandler(async (req, res) => {
 
 	return res
 		.status(201)
-		.json(new ApiResponse(201, tweet.content, "tweet is successfully posted."));
+		.json(new ApiResponse(201, tweet, "tweet is successfully posted."));
 });
 
 const getUserTweets = asyncHandler(async (req, res) => {
 	const userId = req.params?.userId;
 	if (!userId) {
-		throw new ApiError(400,"userId is required")
+		throw new ApiError(400, "userId is required");
 	}
 
 	// TODO: get user tweets
-	const getTweet = await Tweet.findOne({ owner: userId });
+	const getTweet = await Tweet.find({ owner: userId });
 
 	return res
 		.status(200)
-		.json(
-			new ApiResponse(200, getTweet.content, "tweet fatched successfully."),
-		);
+		.json(new ApiResponse(200, getTweet, "tweet fatched successfully."));
 });
 
 const updateTweet = asyncHandler(async (req, res) => {
@@ -54,22 +52,22 @@ const updateTweet = asyncHandler(async (req, res) => {
 	if (!tweetDoc) {
 		throw new ApiError(400, "such no tweet id in db");
 	}
-	// console.log(tweetDoc.owner,typeof tweetDoc.owner);
-	// console.log(req.user._id,typeof req.user._id);
 
 	if (!tweetDoc.owner.equals(req.user._id)) {
 		throw new ApiError(400, "you are not owner of this tweet");
 	}
 
-	const updatedTweet = await Tweet.findByIdAndUpdate(tweetId, {
-		content: text,
-	});
+	const updatedTweet = await Tweet.findByIdAndUpdate(
+		tweetId,
+		{
+			content: text,
+		},
+		{ new: true },
+	);
 
 	return res
 		.status(200)
-		.json(
-			new ApiResponse(200, updatedTweet.content, "tweet update successfully."),
-		);
+		.json(new ApiResponse(200, updatedTweet, "tweet update successfully."));
 });
 
 const deleteTweet = asyncHandler(async (req, res) => {

@@ -3,7 +3,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { Video } from "../models/video.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import mongoose from "mongoose";
+import mongoose, { Query } from "mongoose";
 import { v2 as cloudinary } from "cloudinary";
 
 const uploadAVideo = asyncHandler(async (req, res) => {
@@ -34,7 +34,7 @@ const uploadAVideo = asyncHandler(async (req, res) => {
 
 	return res
 		.status(201)
-		.json(new ApiResponse(201, "video uploaded successfully."));
+		.json(new ApiResponse(201, video, "video uploaded successfully."));
 });
 const getAllVideo = asyncHandler(async (req, res) => {
 	const videoOwner = req?.query?.owner;
@@ -150,6 +150,35 @@ const deleteVideo = asyncHandler(async (req, res) => {
 		.json(new ApiResponse(204, "video deleted successfully."));
 });
 
+const searchVideo = asyncHandler(async (req, res) => {
+	const { searchText } = req?.query;
+
+	if (!searchText) {
+		throw new ApiError(400, "Search Text is required.");
+	}
+
+	const searchResult = await Video.aggregate([
+		{
+			$search: { index: "title", text: { query: searchText, path: "title" } },
+		},
+		{
+			$sort: { score: { $meta: "searchScore" } },
+		},
+	]);
+
+	console.log(searchResult);
+
+	return res
+		.status(200)
+		.json(
+			new ApiResponse(
+				200,
+				searchResult,
+				"matched  vidoes fetched successfully.",
+			),
+		);
+});
+
 export {
 	uploadAVideo,
 	getAllVideo,
@@ -157,4 +186,5 @@ export {
 	togglePublishVideo,
 	deleteVideo,
 	getVideoById,
+	searchVideo,
 };
